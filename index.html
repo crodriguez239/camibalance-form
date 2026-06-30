@@ -173,7 +173,7 @@ input[type=range]::-moz-range-thumb{width:27px;height:27px;border-radius:50%;bac
     <div class="field"><label class="q">Nombre completo</label><input type="text" id="nombre" placeholder="Tu nombre y apellido"></div>
     <div class="inline2">
       <div class="field"><label class="q">Edad</label><input type="number" id="edad" placeholder="años" inputmode="numeric"></div>
-      <div class="field"><label class="q">Estatura</label><input type="number" id="estatura" placeholder="cm" inputmode="numeric"></div>
+      <div class="field"><label class="q">Estatura</label><input type="text" id="estatura" placeholder="Ej: 5'4&quot;" inputmode="text"></div>
     </div>
     <div class="inline2">
       <div class="field"><label class="q">Peso actual</label><input type="number" id="peso" placeholder="lbs" inputmode="decimal"></div>
@@ -186,13 +186,13 @@ input[type=range]::-moz-range-thumb{width:27px;height:27px;border-radius:50%;bac
     <div class="stephead"><div class="badge">2</div><div class="eyebrow">Tu objetivo</div></div>
     <h1>¿Qué quieres lograr?</h1>
     <div class="field">
-      <label class="q">Tu meta principal</label>
+      <label class="q">Tu meta principal</label><p class="hint">Puedes marcar más de una.</p>
       <div class="chips" data-name="meta">
-        <label class="chip"><input type="radio" name="meta" value="Bajar grasa"><span>Bajar grasa</span></label>
-        <label class="chip"><input type="radio" name="meta" value="Ganar músculo y fuerza"><span>Ganar músculo</span></label>
-        <label class="chip"><input type="radio" name="meta" value="Recomposición (bajar grasa + ganar músculo)"><span>Recomposición</span></label>
-        <label class="chip"><input type="radio" name="meta" value="Salud y energía"><span>Salud y energía</span></label>
-        <label class="chip"><input type="radio" name="meta" value="Crear hábitos sostenibles"><span>Hábitos sostenibles</span></label>
+        <label class="chip"><input type="checkbox" name="meta" value="Bajar grasa"><span>Bajar grasa</span></label>
+        <label class="chip"><input type="checkbox" name="meta" value="Ganar músculo y fuerza"><span>Ganar músculo</span></label>
+        <label class="chip"><input type="checkbox" name="meta" value="Recomposición (bajar grasa + ganar músculo)"><span>Recomposición</span></label>
+        <label class="chip"><input type="checkbox" name="meta" value="Salud y energía"><span>Salud y energía</span></label>
+        <label class="chip"><input type="checkbox" name="meta" value="Crear hábitos sostenibles"><span>Hábitos sostenibles</span></label>
       </div>
     </div>
     <div class="field"><label class="q">¿Qué has intentado antes?</label><p class="hint">¿Qué te funcionó y qué no? Sé sincera, sin pena.</p><textarea id="historial" placeholder="Cuéntame tu experiencia con dietas, gym, etc…"></textarea></div>
@@ -263,10 +263,12 @@ input[type=range]::-moz-range-thumb{width:27px;height:27px;border-radius:50%;bac
     <div class="field"><label class="q">Alergias o intolerancias</label><input type="text" id="alergias" placeholder="Ej: lactosa, gluten… o ninguna"></div>
     <div class="field"><label class="q">Medicamentos o suplementos actuales</label><p class="hint">Incluye cualquier medicamento para bajar de peso.</p><textarea id="medicamentos" placeholder="Ej: levotiroxina, creatina… o ninguno"></textarea></div>
     <div class="field">
-      <label class="q">¿Tienes un estudio InBody / seca reciente?</label>
+      <label class="q">¿Tienes un InBody o estudio de composición corporal reciente?</label>
+      <p class="hint">Si no sabes qué es, tranquila — luego te digo si lo necesitamos.</p>
       <div class="chips" data-name="inbody">
         <label class="chip"><input type="radio" name="inbody" value="Sí, lo voy a enviar"><span>Sí, lo envío</span></label>
         <label class="chip"><input type="radio" name="inbody" value="No tengo"><span>No tengo</span></label>
+        <label class="chip"><input type="radio" name="inbody" value="No sé qué es"><span>No sé qué es</span></label>
       </div>
     </div>
   </section>
@@ -275,7 +277,7 @@ input[type=range]::-moz-range-thumb{width:27px;height:27px;border-radius:50%;bac
   <section class="step" data-step="5">
     <div class="stephead"><div class="badge">5</div><div class="eyebrow">Tu vida real</div></div>
     <h1>¿Cómo es tu día a día?</h1>
-    <div class="field"><label class="q">¿Cómo es un día normal de comidas?</label><p class="hint">Horarios, dónde comes, quién cocina en casa.</p><textarea id="diacomidas" placeholder="Ej: café en ayunas, almuerzo en el trabajo, ceno tarde…"></textarea></div>
+    <div class="field"><label class="q">¿Cómo es un día normal en tu vida?</label><p class="hint">Cuéntame tus horarios: a qué hora te levantas, trabajas o estudias, comes, entrenas o podrías entrenar, y a qué hora te acuestas.</p><textarea id="diacomidas" placeholder="Ej: me levanto 6am, trabajo 8–5, almuerzo en la oficina, gym en la tarde, ceno tarde, duermo 11pm…"></textarea></div>
     <div class="field">
       <label class="q">¿Cuántas comidas prefieres al día?</label>
       <div class="chips" data-name="numComidas">
@@ -286,18 +288,17 @@ input[type=range]::-moz-range-thumb{width:27px;height:27px;border-radius:50%;bac
       </div>
     </div>
     <div class="field">
-      <label class="q">Tu actividad actual</label>
-      <div class="chips" data-name="actividad">
-        <label class="chip"><input type="radio" name="actividad" value="Sedentaria"><span>Sedentaria</span></label>
-        <label class="chip"><input type="radio" name="actividad" value="Camino / activa"><span>Camino</span></label>
-        <label class="chip"><input type="radio" name="actividad" value="Voy al gym"><span>Voy al gym</span></label>
-        <label class="chip"><input type="radio" name="actividad" value="Hago deporte"><span>Deporte</span></label>
+      <label class="q">¿Cuál comida se te hace más difícil cumplir?</label>
+      <div class="chips" data-name="comidaDificil">
+        <label class="chip"><input type="radio" name="comidaDificil" value="Desayuno"><span>Desayuno</span></label>
+        <label class="chip"><input type="radio" name="comidaDificil" value="Almuerzo"><span>Almuerzo</span></label>
+        <label class="chip"><input type="radio" name="comidaDificil" value="Cena"><span>Cena</span></label>
+        <label class="chip"><input type="radio" name="comidaDificil" value="Meriendas"><span>Meriendas</span></label>
+        <label class="chip"><input type="radio" name="comidaDificil" value="Todas"><span>Todas</span></label>
+        <label class="chip"><input type="radio" name="comidaDificil" value="Ninguna"><span>Ninguna</span></label>
       </div>
     </div>
-    <div class="inline2">
-      <div class="field"><label class="q">Días de gym / semana</label><input type="number" id="diasGym" placeholder="0 a 7" inputmode="numeric"></div>
-      <div class="field"><label class="q">Horas de sueño</label><input type="number" id="sueno" placeholder="Ej: 7" inputmode="numeric"></div>
-    </div>
+    <div class="field"><label class="q">Horas de sueño</label><input type="number" id="sueno" placeholder="Ej: 7" inputmode="numeric"></div>
     <div class="field">
       <label class="q">Nivel de estrés</label>
       <div class="chips" data-name="estres">
@@ -317,9 +318,72 @@ input[type=range]::-moz-range-thumb{width:27px;height:27px;border-radius:50%;bac
     </div>
   </section>
 
-  <!-- 6 Comida -->
+  <!-- 6 Movimiento -->
   <section class="step" data-step="6">
-    <div class="stephead"><div class="badge">6</div><div class="eyebrow">Tu comida</div></div>
+    <div class="stephead"><div class="badge">6</div><div class="eyebrow">Movimiento</div></div>
+    <h1>¿Cómo te <em>mueves</em>?</h1>
+    <p class="lede">No para presionarte — para darte algo realista con tu vida y tu cuerpo.</p>
+    <div class="field">
+      <label class="q">Tu actividad actual</label>
+      <div class="chips" data-name="actividad">
+        <label class="chip"><input type="radio" name="actividad" value="Sedentaria"><span>Sedentaria</span></label>
+        <label class="chip"><input type="radio" name="actividad" value="Camino / activa"><span>Camino</span></label>
+        <label class="chip"><input type="radio" name="actividad" value="Voy al gym"><span>Voy al gym</span></label>
+        <label class="chip"><input type="radio" name="actividad" value="Hago deporte"><span>Deporte</span></label>
+      </div>
+    </div>
+
+    <div id="trainBlock" style="display:none">
+      <div class="field"><label class="q">¿Qué haces exactamente y cuántos días a la semana?</label><p class="hint">Ej: pesas 4x, cardio 2x, vóleibol los domingos…</p><textarea id="entrenaQue" placeholder="Cuéntame tu rutina actual…"></textarea></div>
+      <div class="field">
+        <label class="q">Tu experiencia entrenando</label>
+        <div class="chips" data-name="nivelEntreno">
+          <label class="chip"><input type="radio" name="nivelEntreno" value="Principiante"><span>Principiante</span></label>
+          <label class="chip"><input type="radio" name="nivelEntreno" value="Intermedia"><span>Intermedia</span></label>
+          <label class="chip"><input type="radio" name="nivelEntreno" value="Avanzada"><span>Avanzada</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div id="startBlock" style="display:none">
+      <div class="field">
+        <label class="q">¿Estarías dispuesta a empezar con algo realista?</label>
+        <div class="chips" data-name="dispuesta">
+          <label class="chip"><input type="radio" name="dispuesta" value="Sí, lista"><span>Sí, lista</span></label>
+          <label class="chip"><input type="radio" name="dispuesta" value="Tal vez, necesito guía"><span>Tal vez, necesito guía</span></label>
+          <label class="chip"><input type="radio" name="dispuesta" value="Ahora mismo no puedo"><span>Ahora no puedo</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="q">¿Cuántos días a la semana podrías moverte?</label>
+        <div class="chips" data-name="diasPodria">
+          <label class="chip"><input type="radio" name="diasPodria" value="1"><span>1</span></label>
+          <label class="chip"><input type="radio" name="diasPodria" value="2"><span>2</span></label>
+          <label class="chip"><input type="radio" name="diasPodria" value="3"><span>3</span></label>
+          <label class="chip"><input type="radio" name="diasPodria" value="4"><span>4</span></label>
+          <label class="chip"><input type="radio" name="diasPodria" value="5+"><span>5+</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="q">¿Qué te limita más para moverte o entrenar?</label><p class="hint">Marca las que apliquen.</p>
+      <div class="chips" data-name="barreras">
+        <label class="chip"><input type="checkbox" name="barreras" value="Tiempo"><span>Tiempo</span></label>
+        <label class="chip"><input type="checkbox" name="barreras" value="Energía"><span>Energía</span></label>
+        <label class="chip"><input type="checkbox" name="barreras" value="No sé qué hacer"><span>No sé qué hacer</span></label>
+        <label class="chip"><input type="checkbox" name="barreras" value="Vergüenza"><span>Vergüenza</span></label>
+        <label class="chip"><input type="checkbox" name="barreras" value="Lesiones"><span>Lesiones</span></label>
+        <label class="chip"><input type="checkbox" name="barreras" value="Dinero"><span>Dinero</span></label>
+        <label class="chip"><input type="checkbox" name="barreras" value="Cuidado de niños"><span>Niños</span></label>
+        <label class="chip"><input type="checkbox" name="barreras" value="Falta de motivación"><span>Motivación</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 Comida -->
+  <section class="step" data-step="7">
+    <div class="stephead"><div class="badge">7</div><div class="eyebrow">Tu comida</div></div>
     <h1>Lo que te gusta comer</h1>
     <p class="lede">Un plan con comida que amas es un plan que sí vas a seguir.</p>
     <div class="field">
@@ -332,6 +396,20 @@ input[type=range]::-moz-range-thumb{width:27px;height:27px;border-radius:50%;bac
         <label class="chip"><input type="radio" name="relacion" value="Complicada"><span>Complicada</span></label>
       </div>
     </div>
+    <div class="field">
+      <label class="q">¿Qué te hace perder la constancia?</label><p class="hint">Marca lo que más te tumba.</p>
+      <div class="chips" data-name="constancia">
+        <label class="chip"><input type="checkbox" name="constancia" value="Fines de semana"><span>Fines de semana</span></label>
+        <label class="chip"><input type="checkbox" name="constancia" value="Ansiedad"><span>Ansiedad</span></label>
+        <label class="chip"><input type="checkbox" name="constancia" value="Comer fuera"><span>Comer fuera</span></label>
+        <label class="chip"><input type="checkbox" name="constancia" value="Alcohol"><span>Alcohol</span></label>
+        <label class="chip"><input type="checkbox" name="constancia" value="No planificar"><span>No planificar</span></label>
+        <label class="chip"><input type="checkbox" name="constancia" value="Trabajo / familia"><span>Trabajo / familia</span></label>
+        <label class="chip"><input type="checkbox" name="constancia" value="Antojos"><span>Antojos</span></label>
+        <label class="chip"><input type="checkbox" name="constancia" value="Me salto comidas"><span>Saltar comidas</span></label>
+      </div>
+    </div>
+    <div class="field"><label class="q">¿Qué comes casi todos los días?</label><p class="hint">Tus básicos: arroz, huevo, pollo, plátano, café…</p><textarea id="staples" placeholder="Lo que casi nunca falta en tu plato…"></textarea></div>
     <div class="field"><label class="q">Comidas que AMAS 🤍</label><textarea id="ama" placeholder="Lo que no te puede faltar…"></textarea></div>
     <div class="field"><label class="q">Comidas que ODIAS o no comes 🚫</label><textarea id="odia" placeholder="Para no ponértelas nunca…"></textarea></div>
     <div class="field">
@@ -340,6 +418,16 @@ input[type=range]::-moz-range-thumb{width:27px;height:27px;border-radius:50%;bac
         <label class="chip"><input type="radio" name="cocina" value="Me encanta cocinar"><span>Me encanta cocinar</span></label>
         <label class="chip"><input type="radio" name="cocina" value="Cocino lo básico"><span>Lo básico</span></label>
         <label class="chip"><input type="radio" name="cocina" value="Necesito rápido / meal prep"><span>Rápido / meal prep</span></label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="q">¿Tienes pesa de comida o estarías dispuesta a usar una al inicio?</label>
+      <p class="hint">Para aprender tus porciones. No es obligatorio para siempre.</p>
+      <div class="chips" data-name="pesa">
+        <label class="chip"><input type="radio" name="pesa" value="Sí, tengo pesa"><span>Sí, tengo</span></label>
+        <label class="chip"><input type="radio" name="pesa" value="No tengo pero puedo comprar"><span>Puedo comprar</span></label>
+        <label class="chip"><input type="radio" name="pesa" value="Prefiero medidas visuales / de mano"><span>Medidas visuales</span></label>
+        <label class="chip"><input type="radio" name="pesa" value="No quiero pesar"><span>No quiero pesar</span></label>
       </div>
     </div>
     <div class="field">
@@ -356,8 +444,8 @@ input[type=range]::-moz-range-thumb{width:27px;height:27px;border-radius:50%;bac
     <div class="field"><label class="q">¿Algo más que quieras que sepa?</label><p class="hint">Lesiones, miedos, lo que sea. Este es tu espacio.</p><textarea id="extra" placeholder="Cuéntame lo que quieras…"></textarea></div>
   </section>
 
-  <!-- 7 Resumen -->
-  <section class="step" data-step="7">
+  <!-- 8 Resumen -->
+  <section class="step" data-step="8">
     <div class="stephead"><div class="badge">✓</div><div class="eyebrow">Listo</div></div>
     <h1>Tu información está <em>completa</em></h1>
     <p class="lede">Envíame tu resumen y empiezo a diseñar tu plan. Si tienes tu estudio InBody, mándamelo también.</p>
@@ -395,7 +483,7 @@ const CONFIG = {
 };
 /* ============================================================ */
 
-const TOTAL=7;
+const TOTAL=8;
 let current=0;
 const steps=[...document.querySelectorAll('.step')];
 const fill=document.getElementById('fill'), stepCount=document.getElementById('stepCount');
@@ -404,35 +492,57 @@ const backBtn=document.getElementById('backBtn'), nextBtn=document.getElementByI
 function render(){
   steps.forEach(s=>s.classList.toggle('active', +s.dataset.step===current));
   fill.style.width=(current/TOTAL*100)+'%';
-  stepCount.textContent = current===0?'Bienvenida':(current===7?'Completado':'Paso '+current+' de 6');
+  stepCount.textContent = current===0?'Bienvenida':(current===8?'Completado':'Paso '+current+' de 7');
   backBtn.classList.toggle('hide', current===0);
-  nextBtn.textContent = current===0?'Empezar':(current===6?'Ver mi resumen':'Siguiente');
-  nextBtn.style.display = current===7?'none':'block';
-  backBtn.style.flex = current===7?'1':'';
+  nextBtn.textContent = current===0?'Empezar':(current===7?'Ver mi resumen':'Siguiente');
+  nextBtn.style.display = current===8?'none':'block';
+  backBtn.style.flex = current===8?'1':'';
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function go(n){ current=Math.max(0,Math.min(TOTAL,n)); if(current===7) buildSummary(); render(); }
+function go(n){ current=Math.max(0,Math.min(TOTAL,n)); if(current===8) buildSummary(); render(); }
 nextBtn.addEventListener('click',()=>go(current+1));
 backBtn.addEventListener('click',()=>go(current-1));
 
 const slider=document.getElementById('compromiso'), sv=document.getElementById('compromisoVal');
 slider.addEventListener('input',()=>sv.textContent=slider.value);
 
+/* Movimiento: mostrar preguntas según actividad */
+const trainBlock=document.getElementById('trainBlock');
+const startBlock=document.getElementById('startBlock');
+function updateMovimiento(){
+  const sel=document.querySelector('input[name="actividad"]:checked');
+  const v=sel?sel.value:'';
+  const trains = (v==='Voy al gym' || v==='Hago deporte');
+  const starts = (v==='Sedentaria' || v==='Camino / activa');
+  trainBlock.style.display = trains?'block':'none';
+  startBlock.style.display = starts?'block':'none';
+}
+[...document.querySelectorAll('input[name="actividad"]')].forEach(i=>i.addEventListener('change',updateMovimiento));
+updateMovimiento();
+
 const val=id=>{const e=document.getElementById(id);return e&&e.value.trim()?e.value.trim():'—';};
 const radio=name=>{const e=document.querySelector(`input[name="${name}"]:checked`);return e?e.value:'—';};
 const checks=name=>{const a=[...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e=>e.value);return a.length?a.join(', '):'—';};
 
 function buildSummary(){
+  // Movimiento: solo incluir lo que aplica según la rama elegida
+  let mov = `🏃 MOVIMIENTO\nActividad actual: ${radio('actividad')}`;
+  if(val('entrenaQue')!=='—')   mov += `\nQué entrena / días: ${val('entrenaQue')}`;
+  if(radio('nivelEntreno')!=='—') mov += `\nExperiencia: ${radio('nivelEntreno')}`;
+  if(radio('dispuesta')!=='—')   mov += `\nDispuesta a empezar: ${radio('dispuesta')}`;
+  if(radio('diasPodria')!=='—')  mov += `\nDías que podría moverse: ${radio('diasPodria')}`;
+  mov += `\nQué la limita: ${checks('barreras')}`;
+
   const t=
 `🌿 NUEVA CLIENTA · ${CONFIG.brandName}
 
 👤 DATOS
 Nombre: ${val('nombre')}
-Edad: ${val('edad')}  ·  Estatura: ${val('estatura')} cm  ·  Peso: ${val('peso')} lbs
+Edad: ${val('edad')}  ·  Estatura: ${val('estatura')}  ·  Peso: ${val('peso')} lbs
 WhatsApp: ${val('telefono')}
 
 🎯 OBJETIVO
-Meta: ${radio('meta')}
+Meta: ${checks('meta')}
 Experiencia previa: ${val('historial')}
 Compromiso: ${slider.value}/10
 
@@ -447,19 +557,24 @@ Ciclo: ${radio('ciclo')}
 Embarazo/lactancia: ${radio('embarazo')}
 Alergias/intolerancias: ${val('alergias')}
 Medicamentos/suplementos: ${val('medicamentos')}
-Estudio InBody: ${radio('inbody')}
+InBody / composición: ${radio('inbody')}
 
 🍽️ DÍA A DÍA
-Día normal de comidas: ${val('diacomidas')}
+Día normal (horarios): ${val('diacomidas')}
 Comidas/día: ${radio('numComidas')}
-Actividad: ${radio('actividad')}  ·  Días gym: ${val('diasGym')}
+Comida más difícil de cumplir: ${radio('comidaDificil')}
 Sueño: ${val('sueno')} h  ·  Estrés: ${radio('estres')}  ·  Agua: ${radio('agua')}
+
+${mov}
 
 🛒 COMIDA
 Relación con la comida: ${radio('relacion')}
+Qué le tumba la constancia: ${checks('constancia')}
+Come casi a diario: ${val('staples')}
 Ama: ${val('ama')}
 Odia / no come: ${val('odia')}
 Cocina: ${radio('cocina')}
+Pesa / porciones: ${radio('pesa')}
 Compra en: ${checks('compras')}
 Come fuera / alcohol: ${val('fuera')}
 
